@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>前后端分离计算器 - 832401225</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <main class="layout">
+      <!-- 计算器面板：负责输入与结果展示，计算全部交给后端 -->
+      <section class="card calculator" aria-label="计算器">
+        <header class="calc-header">
+          <h1>计算器</h1>
+          <div class="header-actions">
+            <span id="api-status" class="api-status">
+              <i class="dot"></i><span id="api-status-text">检测后端中…</span>
+            </span>
+            <button id="theme-toggle" class="icon-btn" type="button" title="切换主题">🌙</button>
+          </div>
+        </header>
+
+        <div class="display">
+          <div id="expression" class="expression">0</div>
+          <div id="result" class="result"></div>
+        </div>
+
+        <div class="keypad" id="keypad">
+          <button class="key function" type="button" data-action="clear">C</button>
+          <button class="key function" type="button" data-insert="(">(</button>
+          <button class="key function" type="button" data-insert=")">)</button>
+          <button class="key function" type="button" data-action="backspace">⌫</button>
+
+          <button class="key" type="button" data-insert="7">7</button>
+          <button class="key" type="button" data-insert="8">8</button>
+          <button class="key" type="button" data-insert="9">9</button>
+          <button class="key operator" type="button" data-insert="/">÷</button>
+
+          <button class="key" type="button" data-insert="4">4</button>
+          <button class="key" type="button" data-insert="5">5</button>
+          <button class="key" type="button" data-insert="6">6</button>
+          <button class="key operator" type="button" data-insert="*">×</button>
+
+          <button class="key" type="button" data-insert="1">1</button>
+          <button class="key" type="button" data-insert="2">2</button>
+          <button class="key" type="button" data-insert="3">3</button>
+          <button class="key operator" type="button" data-insert="-">−</button>
+
+          <button class="key" type="button" data-insert="0">0</button>
+          <button class="key" type="button" data-insert=".">.</button>
+          <button class="key operator" type="button" data-insert="+">+</button>
+          <button class="key equals" type="button" data-action="equals">=</button>
+        </div>
+
+        <footer class="calc-footer">
+          支持键盘输入：数字、运算符、Enter 求值、Backspace 删除、Esc 清空
+        </footer>
+      </section>
+
+      <!-- 历史记录面板：数据全部来自后端数据库 -->
+      <aside class="card history" aria-label="历史记录">
+        <header class="history-header">
+          <h2>历史记录</h2>
+          <button id="clear-history" class="text-btn danger" type="button">清空全部</button>
+        </header>
+        <p class="history-source">数据来自后端数据库，刷新页面不会丢失</p>
+        <ul id="history-list" class="history-list"></ul>
+      </aside>
+    </main>
+
+    <script src="js/config.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>
