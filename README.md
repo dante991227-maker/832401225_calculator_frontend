@@ -94,4 +94,4 @@ const API_BASE_URL = isLocal ? DEV_API_BASE : PROD_API_BASE;
 
 ## 部署说明
 
-支持 GitHub Pages 或 Render Static Site 两种免费方式，详细步骤见项目根目录的《部署指南》（部署指南.md）。部署后注意核对 `src/js/config.js` 中的线上后端地址。
+使用 GitHub Pages 免费托管：前端仓库 **Settings → Pages → Deploy from a branch**，选 `main` 与 `/ (root)` 保存即可，访问地址为 `https://<用户名>.github.io/832401225_calculator_frontend/`。详细步骤见项目根目录的《部署指南》（部署指南.md）。部署后注意核对 `src/js/config.js` 中的线上后端地址。
