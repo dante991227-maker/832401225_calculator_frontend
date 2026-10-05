@@ -48,14 +48,14 @@ python3 -m http.server 8080
 
 ```js
 const DEV_API_BASE = "http://localhost:5001";   // 本地开发后端地址
-const PROD_API_BASE = "https://832401225-calculator-backend.onrender.com"; // 线上后端地址
+const PROD_API_BASE = "https://eight32401225-calculator-backend.onrender.com"; // 线上后端地址
 
 const API_BASE_URL = isLocal ? DEV_API_BASE : PROD_API_BASE;
 ```
 
 - 本地打开（localhost / 127.0.0.1 / file://）时自动使用 `DEV_API_BASE`；
 - 部署到线上时自动使用 `PROD_API_BASE`。如果你部署的后端服务名不是
-  `832401225-calculator-backend`，请把 `PROD_API_BASE` 改成你的后端地址。
+  `eight32401225-calculator-backend`，请把 `PROD_API_BASE` 改成你的后端地址。
 
 页面右上角有**后端连接状态指示灯**：绿色“后端已连接” / 红色“后端未连接”，可快速判断前后端是否联通。
 
