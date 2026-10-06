@@ -1,9 +1,9 @@
 /**
- * 后端 API 地址配置。
+ * Backend API base URL configuration.
  *
- * - 本地开发：后端默认运行在 http://localhost:5001（见后端 README）。
- * - 线上部署：请把 PROD_API_BASE 改成你在 Render 上创建的后端服务地址。
- *   如果后端服务命名为 eight32401225-calculator-backend，则无需修改。
+ * - Local development: the backend runs at http://localhost:5001 (see the backend README).
+ * - Production: set PROD_API_BASE to your own Render service URL.
+ *   If the service is named eight32401225-calculator-backend, no change is needed.
  */
 const DEV_API_BASE = "http://localhost:5001";
 const PROD_API_BASE = "https://eight32401225-calculator-backend.onrender.com";

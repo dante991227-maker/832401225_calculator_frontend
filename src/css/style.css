@@ -1,5 +1,5 @@
 /* ==========================================================================
-   计算器样式（含明暗两套主题，通过 html[data-theme] 切换）
+   Calculator styles (light and dark themes, switched via html[data-theme])
    ========================================================================== */
 
 :root {
@@ -70,7 +70,7 @@ body {
   transition: background 0.25s ease;
 }
 
-/* ---------------- 计算器面板 ---------------- */
+/* ---------------- Calculator panel ---------------- */
 
 .calc-header {
   display: flex;
@@ -156,7 +156,7 @@ body {
   font-size: 14px;
 }
 
-/* ---------------- 按键区 ---------------- */
+/* ---------------- Keypad ---------------- */
 
 .keypad {
   display: grid;
@@ -211,7 +211,7 @@ body {
   text-align: center;
 }
 
-/* ---------------- 历史记录面板 ---------------- */
+/* ---------------- History panel ---------------- */
 
 .history-header {
   display: flex;
@@ -315,7 +315,7 @@ body {
   padding: 20px 0;
 }
 
-/* ---------------- 响应式 ---------------- */
+/* ---------------- Responsive ---------------- */
 
 @media (max-width: 760px) {
   .layout {

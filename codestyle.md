@@ -1,65 +1,68 @@
-# 前端代码规范（HTML / CSS / JavaScript）
+# Frontend Code Standard (HTML / CSS / JavaScript)
 
-> 本规范来源：**[Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript)**（JavaScript 部分），
-> 并参考 [Google HTML/CSS Style Guide](https://google.github.io/styleguide/htmlcssguide.html)。
-> 本项目前端全部代码遵循以下规则。
+> Source of this standard: **[Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript)** (JavaScript),
+> together with the [Google HTML/CSS Style Guide](https://google.github.io/styleguide/htmlcssguide.html).
+> All frontend code in this project follows the rules below.
 
 ## 1. HTML
 
-- 文件编码 UTF-8，页面声明 `<html lang="zh-CN">`；
-- 属性值使用双引号；布尔属性省略值（如 `defer`）；
-- 标签语义化：`main` / `section` / `aside` / `header` / `footer`；
-- 可交互元素必须是 `<button type="button">`，并设置 `title` 或 `aria-label` 说明用途；
-- 静态资源用相对路径引用，保证可部署到任意子路径（如 GitHub Pages）。
+- UTF-8 encoding; pages declare `<html lang="en">`;
+- Attribute values use double quotes; boolean attributes are written bare (e.g. `defer`);
+- Semantic tags: `main` / `section` / `aside` / `header` / `footer`;
+- Interactive elements must be `<button type="button">` with a `title` or `aria-label` explaining their purpose;
+- Static assets are referenced with relative paths so the site works under any sub-path (e.g. GitHub Pages).
 
 ## 2. CSS
 
-- 缩进 2 空格；每条声明独占一行；
-- 类名使用 **kebab-case**（如 `history-item`、`calc-header`）；
-- 颜色、圆角、阴影等设计值统一收敛到 `:root` 的 **CSS 自定义属性**，暗色主题通过
-  `html[data-theme="dark"]` 覆盖变量实现，禁止在组件里写死重复色值；
-- 不使用 `!important`；优先用类选择器，避免依赖元素层级过深的选择器；
-- 小屏幕使用媒体查询响应式布局（`@media (max-width: 760px)`）。
+- 2-space indentation; one declaration per line;
+- Class names use **kebab-case** (e.g. `history-item`, `calc-header`);
+- Design values (colors, radii, shadows) live in `:root` **CSS custom properties**;
+  the dark theme overrides them via `html[data-theme="dark"]` — never hardcode duplicated colors;
+- No `!important`; prefer class selectors and avoid deeply nested selectors;
+- Responsive layout via media queries (`@media (max-width: 760px)`).
 
 ## 3. JavaScript
 
-### 基本格式
+### Formatting
 
-- 缩进 2 空格；语句结尾**必须加分号**；
-- 字符串统一使用双引号（模板字符串除外）；
-- 声明一律使用 `const`，仅在需要重新赋值时使用 `let`，禁止 `var`；
-- 相等比较一律使用 `===` / `!==`，禁止 `==` / `!=`；
-- 每行不超过 100 字符。
+- 2-space indentation; **semicolons are required**;
+- Strings use double quotes (template literals excepted);
+- Always `const`; use `let` only when reassignment is needed; never `var`;
+- Always compare with `===` / `!==`, never `==` / `!=`;
+- Max 100 characters per line.
 
-### 命名
+### Naming
 
-| 对象 | 风格 | 示例 |
+| Object | Style | Examples |
 | --- | --- | --- |
-| 变量/函数 | 小驼峰 | `renderHistory()`、`lastResult` |
-| 常量 | 全大写下划线 | `API_BASE_URL`、`REQUEST_TIMEOUT_MS` |
-| DOM 引用缓存 | 小驼峰名词 | `displayExpression` |
-| 布尔变量 | is/has 前缀 | `justEvaluated`、`keyboardWorked` |
+| Variables/functions | camelCase | `renderHistory()`, `lastResult` |
+| Constants | UPPER_SNAKE_CASE | `API_BASE_URL`, `REQUEST_TIMEOUT_MS` |
+| Cached DOM references | camelCase nouns | `displayExpression` |
+| Booleans | is/has prefix | `justEvaluated` |
 
-### 结构与函数
+### Structure and Functions
 
-- 一个函数只做一件事，长度尽量不超过 40 行；
-- 函数写 **JSDoc 注释**说明参数、返回值与抛出的异常；
-- 模块划分：`config.js`（配置）、`api.js`（网络层）、`app.js`（交互层），配置与网络请求不允许散落在 UI 代码里；
-- 事件处理优先使用**事件委托**（如整个键盘区只绑一个 click 监听）。
+- One function does one thing and stays under ~40 lines;
+- Public functions carry **JSDoc comments** describing params, return values and thrown errors;
+- File layout: `config.js` (configuration), `api.js` (network layer), `app.js` (interaction);
+  configuration and network calls never leak into UI code;
+- Prefer **event delegation** (e.g. one click listener for the whole keypad).
 
-### 安全约定
+### Security
 
-- 任何后端返回的数据（表达式、错误信息等）插入页面时必须使用 `textContent`，
-  **禁止 `innerHTML` 拼接**，防止 XSS；
-- `fetch` 必须设置超时（`AbortController`），网络异常统一转换为用户可读的提示；
-- `localStorage` 只允许存储主题偏好等非业务数据，**业务数据（计算历史）一律来自后端数据库**。
+- Any data returned by the backend (expressions, error messages) must be inserted with
+  `textContent` — **never concatenate `innerHTML`**, to prevent XSS;
+- `fetch` calls must set a timeout (`AbortController`); network errors are converted
+  into user-friendly messages;
+- `localStorage` may only store non-business data such as the theme preference;
+  **business data (calculation history) always comes from the backend database**.
 
-### 异步
+### Async
 
-- 异步函数使用 `async / await`，禁止回调嵌套；
-- `await` 的调用用 `try / catch` 包裹，失败时向用户展示友好信息而不是静默失败。
+- Use `async / await`; callback nesting is forbidden;
+- Wrap `await` calls in `try / catch` and show the user a friendly message instead of failing silently.
 
-## 4. 提交前检查
+## 4. Before Committing
 
-- 在 Chrome / Safari 下手动验证主要流程（计算、历史、删除、主题）；
-- 确认无 console 报错。
+- Manually verify the main flows in Chrome / Safari (calculate, history, delete, theme);
+- Make sure the console shows no errors.

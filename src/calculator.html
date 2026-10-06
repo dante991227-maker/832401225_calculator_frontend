@@ -1,22 +1,22 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>前后端分离计算器 - 832401225</title>
+    <title>Frontend/Backend Separated Calculator - 832401225</title>
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
     <main class="layout">
-      <!-- 计算器面板：负责输入与结果展示，计算全部交给后端 -->
-      <section class="card calculator" aria-label="计算器">
+      <!-- Calculator panel: input and result display; all calculation is done by the backend -->
+      <section class="card calculator" aria-label="Calculator">
         <header class="calc-header">
-          <h1>计算器</h1>
+          <h1>Calculator</h1>
           <div class="header-actions">
             <span id="api-status" class="api-status">
-              <i class="dot"></i><span id="api-status-text">检测后端中…</span>
+              <i class="dot"></i><span id="api-status-text">Checking backend…</span>
             </span>
-            <button id="theme-toggle" class="icon-btn" type="button" title="切换主题">🌙</button>
+            <button id="theme-toggle" class="icon-btn" type="button" title="Toggle theme">🌙</button>
           </div>
         </header>
 
@@ -53,17 +53,17 @@
         </div>
 
         <footer class="calc-footer">
-          支持键盘输入：数字、运算符、Enter 求值、Backspace 删除、Esc 清空
+          Keyboard supported: digits and operators, Enter to evaluate, Backspace to delete, Esc to clear
         </footer>
       </section>
 
-      <!-- 历史记录面板：数据全部来自后端数据库 -->
-      <aside class="card history" aria-label="历史记录">
+      <!-- History panel: all data comes from the backend database -->
+      <aside class="card history" aria-label="History">
         <header class="history-header">
-          <h2>历史记录</h2>
-          <button id="clear-history" class="text-btn danger" type="button">清空全部</button>
+          <h2>History</h2>
+          <button id="clear-history" class="text-btn danger" type="button">Clear all</button>
         </header>
-        <p class="history-source">数据来自后端数据库，刷新页面不会丢失</p>
+        <p class="history-source">Data comes from the backend database and survives page refreshes</p>
         <ul id="history-list" class="history-list"></ul>
       </aside>
     </main>
